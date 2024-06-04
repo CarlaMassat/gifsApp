@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { GifsService } from '../../../gifs/services/gifs.service';
 
 @Component({
   selector: 'app-sidebar',
@@ -6,5 +7,14 @@ import { Component } from '@angular/core';
   styleUrl: './sidebar.component.css'
 })
 export class SidebarComponent {
+constructor(private gifsService: GifsService){}
 
+//
+get tags() {
+  return this.gifsService.tagsHistory;
+}
+//metodo para volver a clickar en el gif buscado
+searchTag(tag:string):void {
+  this.gifsService.searchTag(tag)
+}
 }
